@@ -8,5 +8,5 @@ print GFSocialPlatformEnumType.Qzone
 
 print type(GFSocialPlatformEnumType.WechatSession)
 
-
+print GFSocialPlatformEnumType.WechatTimeLine
 
