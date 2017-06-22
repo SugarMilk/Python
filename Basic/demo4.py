@@ -10,3 +10,7 @@ class GFSocialPlatformEnumType:
     TencentWeibo = 5
     SMS = 6
     Email = 7
+
+    def __init__(self):
+        pass
+
