@@ -3,6 +3,8 @@
 
 import urllib2
 
+# https://wenku.baidu.com/view/02ce833b83c4bb4cf7ecd16c.html
+
 def func():
     url = "http://blog.kamidox.com/no-exist"
 
