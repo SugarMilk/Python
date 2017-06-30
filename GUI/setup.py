@@ -7,7 +7,7 @@ Usage:
 
 from setuptools import setup
 
-APP = ['demo.py']
+APP = ['SDKVersionManager.py']
 DATA_FILES = []
 OPTIONS = {'argv_emulation': True}
 
