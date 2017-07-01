@@ -18,7 +18,7 @@ button.SetBezelWidth(5)             # 3D斜面效果
 button.SetBackgroundColour("Navy")  # 背景颜色
 button.SetForegroundColour("White") # 字体颜色（前景颜色）
 
-# image = wx.Image('tag.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap()
+# image = wx.Image('tag2.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap()
 # buttons.GenBitmapButton(panel, -1, image, pos=(110, 0))
 
 # buttons.GenBitmapToggleButton(panel, -1, image)

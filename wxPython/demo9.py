@@ -9,7 +9,7 @@ app = wx.App()
 window = wx.Frame(None, size=(300, 150))
 panel = wx.Panel(window, -1)
 
-image = wx.Image('tag.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap()
+image = wx.Image('tag2.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap()
 
 buttons.GenToggleButton(panel, -1, "Toggle Button")
 
