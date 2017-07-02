@@ -3,18 +3,17 @@
 
 import wx
 
-class FinderDialog:
+def chooseDir(superview, title="", onselected=None):
+    dialog = wx.DirDialog(superview, message=title)
+    if dialog.ShowModal() == wx.ID_OK:
+        if onselected:
+            onselected(dialog.GetPath())
+    dialog.Destroy()
 
-    def chooseDir(self, superview, title, onselected=None):
-        dialog = wx.DirDialog(superview, message=title)
-        if dialog.ShowModal() == wx.ID_OK:
-            if onselected:
-                onselected(dialog.GetPath())
-        dialog.Destroy()
 
-    def chooseFile(self, superview, title, onselected=None):
-        dialog = wx.FileDialog(superview, message=title)
-        if dialog.ShowModal() == wx.ID_OK:
-            if onselected:
-                onselected(dialog.GetPath())
-        dialog.Destroy()
+def chooseFile(superview, title="", onselected=None):
+    dialog = wx.FileDialog(superview, message=title)
+    if dialog.ShowModal() == wx.ID_OK:
+        if onselected:
+            onselected(dialog.GetPath())
+    dialog.Destroy()

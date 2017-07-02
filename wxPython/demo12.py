@@ -37,7 +37,7 @@ class Mywin(wx.Frame):
         a = MyDialog(self, "Dialog").Show()
 
     def Onmsgbox(self, event):
-        wx.MessageBox("This is a Message Box", "Message", wx.OK | wx.ICON_INFORMATION)
+        wx.MessageBox("This is a Message Box", "Message")
 
 
 ex = wx.App()

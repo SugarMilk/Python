@@ -7,7 +7,12 @@ class Textfield(wx.TextCtrl):
 
     def __init__(self, superview, style=0):
         wx.TextCtrl.__init__(self, superview, -1, style=style)
-        self.SetLabel("请输入密码")
+
+    def text(self, text):
+        self.SetLabelText(text)
+
+    def gettext(self):
+        return self.GetValue()
 
     def origin(self, origin):
         self.SetPosition(origin)

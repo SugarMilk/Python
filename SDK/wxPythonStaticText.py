@@ -4,11 +4,17 @@
 import wx
 
 class StaticText(wx.StaticText):
+    prviate_text = ""
+
     def __init__(self, superview, style=0):
-        wx.StaticText.__init__(self, superview, -1, style=wx.BORDER_THEME)
+        wx.StaticText.__init__(self, superview, -1, style=style)
 
     def text(self, text):
+        self.prviate_text = text
         self.SetLabel(text)
+
+    def gettext(self):
+        return self.prviate_text
 
     def minsize(self, minsize):
         self.SetMinSize(minsize)
@@ -20,7 +26,7 @@ class StaticText(wx.StaticText):
         self.SetPosition(origin)
 
     def font(self, font):
-        self.SetFont(wx.Font(font, wx.ROMAN, wx.ITALIC, wx.NORMAL))
+        self.SetFont(wx.Font(font, wx.ROMAN, wx.NORMAL, wx.NORMAL))
 
     def textcolor(self, textcolor):
         self.SetForegroundColour(textcolor)

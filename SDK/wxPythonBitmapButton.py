@@ -8,3 +8,7 @@ class BitmapButton(wx.BitmapButton):
         image = wx.Image(imagepath, wx.BITMAP_TYPE_PNG).ConvertToBitmap()
         wx.BitmapButton.__init__(self, superview, -1, image)
         self.Bind(wx.EVT_BUTTON, onclick, self)
+
+    def origin(self, origin):
+        self.SetPosition(origin)
+
