@@ -9,9 +9,12 @@ from wxPythonRadioBox import RadioBox
 from wxPythonButton import Button
 import ConfigBoard
 import wx
+import SDKVersionManager
+import os
+import BeforeBuild
 
 app = wx.App()
-window = wx.Frame(None, title="好玩友SDK打包工具", size=(500, 270), style=wx.CLOSE_BOX | wx.MINIMIZE_BOX)
+window = wx.Frame(None, title="好玩友SDK导出工具", size=(500, 270), style=wx.CLOSE_BOX | wx.MINIMIZE_BOX)
 panel = wx.Panel(window, -1)
 
 # 设置按钮
@@ -45,7 +48,7 @@ targetLabel.origin((20, 60))
 
 # 目的单选
 
-targetRadioList = ["接入游戏自测", "给SDK质检测试", "给游戏质检测试"]
+targetRadioList = [u"接入游戏自测", u"给SDK质检测试", u"给游戏质检测试"]
 
 targetRadio = RadioBox(panel, targetRadioList)
 targetRadio.SetPosition((70, 55))
@@ -78,7 +81,7 @@ oldVersionTf.origin((100, 140))
 oldVersionTf.size((120, 25))
 oldVersionTf.font(16)
 oldVersionTf.textcolor("gray")
-oldVersionTf.text("3.0.0.8")
+oldVersionTf.text(SDKVersionManager.get_old_version())
 
 # 新版本号
 
@@ -94,6 +97,13 @@ newVersionTf.origin((323, 140))
 newVersionTf.size((120, 25))
 newVersionTf.font(16)
 
+oldVersion = SDKVersionManager.get_old_version()
+temp = oldVersion.split('.')
+temp[len(temp) - 1] = str(int(temp[len(temp) - 1]) + 1)
+newVersion = ".".join(temp)
+
+newVersionTf.text(newVersion)
+
 # 运行Demo工程
 
 def onRunButtonAction(event):
@@ -105,24 +115,36 @@ runButton.size((190, 35))
 runButton.font(17)
 runButton.title("\n运行Demo工程\n")
 
-# 编译打包Framework
+# 编译导出Framework
 
 def onBuildButtonAction(event):
-    print "Build..."
-    wx.MessageBox("Build Success", "Message")
-    print modeRadio.getselect()
-    print targetRadio.getselect()
-    print noteTf.gettext()
-    print newVersionTf.gettext()
 
+    mode = modeRadioList[modeRadio.getselect()].encode('utf-8')
+    target = targetRadioList[targetRadio.getselect()].encode('utf-8')
+    note = noteTf.gettext().encode('utf-8')
+    version = newVersionTf.gettext().encode('utf-8')
+
+    buildInfomation = BeforeBuild.buildInfomation(mode, target, note, version)
+    confirmDialog = wx.MessageDialog(panel, buildInfomation[0], "编译导出前请确认无误",style=wx.YES_NO)
+
+    if confirmDialog.ShowModal() == wx.ID_YES:
+        SDKVersionManager.set_new_version(newVersionTf.gettext())
+
+        if not os.path.exists("extraInfo.h"):
+            os.system("touch extraInfo.h")
+        context = open("extraInfo.h", 'w')
+        context.write(buildInfomation[1])
+        context.close()
 
 buildButton = Button(panel, onClick=onBuildButtonAction)
 buildButton.origin((240, 183))
 buildButton.size((200, 35))
 buildButton.font(17)
-buildButton.title("\n编译打包Framework\n")
+buildButton.title("\n编译导出Framework\n")
 
 
 
 window.Show()
 app.MainLoop()
+
+
