@@ -6,15 +6,8 @@ from wxPythonStaticText import StaticText
 from wxPythonButton import Button
 from wxPythonTextfield import Textfield
 from wxPythonFinderDialog import *
-import PersistenceUtil
 import wx
-
-key_projectFilePath = "projectFilePath"
-key_versionFilePath = "versionFilePath"
-key_extraFilePath = "extraFilePath"
-key_exportDirPath = "exportDirPath"
-
-filePath = "config.json"
+import PathUtil
 
 def openConfigBoard(superview, title):
     dialog = wx.Dialog(parent=superview, title=title, size=(940, 360))
@@ -39,7 +32,7 @@ def openConfigBoard(superview, title):
     projectPathTf.origin((20, 45))
     projectPathTf.size((895, 25))
     projectPathTf.textcolor("gray")
-    projectPathTf.text(PersistenceUtil.getValueFromJson(filePath, key_projectFilePath))
+    projectPathTf.text(PathUtil.get(PathUtil.key_projectFilePath))
 
     def onProjectPathSelected(path):
         projectPathTf.text(path)
@@ -62,7 +55,7 @@ def openConfigBoard(superview, title):
     versionPathTf.origin((20, 105))
     versionPathTf.size((895, 25))
     versionPathTf.textcolor("gray")
-    versionPathTf.text(PersistenceUtil.getValueFromJson(filePath, key_versionFilePath))
+    versionPathTf.text(PathUtil.get(PathUtil.key_versionFilePath))
 
     def onVersionPathSelected(path):
         versionPathTf.text(path)
@@ -85,7 +78,7 @@ def openConfigBoard(superview, title):
     extraPathTf.origin((20, 165))
     extraPathTf.size((895, 25))
     extraPathTf.textcolor("gray")
-    extraPathTf.text(PersistenceUtil.getValueFromJson(filePath, key_extraFilePath))
+    extraPathTf.text(PathUtil.get(PathUtil.key_extraFilePath))
 
     def onExtraPathSelected(path):
         extraPathTf.text(path)
@@ -108,7 +101,7 @@ def openConfigBoard(superview, title):
     exportPathTf.origin((20, 225))
     exportPathTf.size((895, 25))
     exportPathTf.textcolor("gray")
-    exportPathTf.text(PersistenceUtil.getValueFromJson(filePath, key_exportDirPath))
+    exportPathTf.text(PathUtil.get(PathUtil.key_exportDirPath))
 
     def onExportPathSelected(path):
         exportPathTf.text(path)
@@ -116,10 +109,10 @@ def openConfigBoard(superview, title):
     # 保存配置
 
     def onSaveButtonAction(event):
-        PersistenceUtil.modifyJson(filePath, key_projectFilePath, projectPathTf.gettext())
-        PersistenceUtil.modifyJson(filePath, key_versionFilePath, versionPathTf.gettext())
-        PersistenceUtil.modifyJson(filePath, key_extraFilePath, extraPathTf.gettext())
-        PersistenceUtil.modifyJson(filePath, key_exportDirPath, exportPathTf.gettext())
+        PathUtil.set(PathUtil.key_projectFilePath, projectPathTf.gettext())
+        PathUtil.set(PathUtil.key_versionFilePath, versionPathTf.gettext())
+        PathUtil.set(PathUtil.key_extraFilePath, extraPathTf.gettext())
+        PathUtil.set(PathUtil.key_exportDirPath, exportPathTf.gettext())
         dialog.Close()
 
     saveButton = Button(panel, onClick=onSaveButtonAction)
