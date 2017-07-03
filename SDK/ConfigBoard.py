@@ -17,7 +17,7 @@ key_exportDirPath = "exportDirPath"
 filePath = "config.json"
 
 def openConfigBoard(superview, title):
-    dialog = wx.Dialog(parent=superview, title=title, size=(600, 360))
+    dialog = wx.Dialog(parent=superview, title=title, size=(940, 360))
     dialog.SetPosition((superview.GetPosition()[0], superview.GetPosition()[1]+20))
     panel = wx.Panel(dialog)
 
@@ -32,12 +32,12 @@ def openConfigBoard(superview, title):
         chooseFile(panel, onselected=onProjectPathSelected)
 
     projectPathButton = Button(panel, onClick=onProjectPathButtonAction)
-    projectPathButton.origin((495, 20))
+    projectPathButton.origin((830, 20))
     projectPathButton.title("选择")
 
     projectPathTf = Textfield(panel, style=textfieldtype.readonly)
     projectPathTf.origin((20, 45))
-    projectPathTf.size((560, 25))
+    projectPathTf.size((895, 25))
     projectPathTf.textcolor("gray")
     projectPathTf.text(PersistenceUtil.getValueFromJson(filePath, key_projectFilePath))
 
@@ -55,12 +55,12 @@ def openConfigBoard(superview, title):
         chooseFile(panel, onselected=onVersionPathSelected)
 
     versionPathButton = Button(panel, onClick=onVersionPathButtonAction)
-    versionPathButton.origin((495, 80))
+    versionPathButton.origin((830, 80))
     versionPathButton.title("选择")
 
     versionPathTf = Textfield(panel, style=textfieldtype.readonly)
     versionPathTf.origin((20, 105))
-    versionPathTf.size((560, 25))
+    versionPathTf.size((895, 25))
     versionPathTf.textcolor("gray")
     versionPathTf.text(PersistenceUtil.getValueFromJson(filePath, key_versionFilePath))
 
@@ -78,12 +78,12 @@ def openConfigBoard(superview, title):
         chooseFile(panel, onselected=onExtraPathSelected)
 
     extraPathButton = Button(panel, onClick=onExtraPathButtonAction)
-    extraPathButton.origin((495, 140))
+    extraPathButton.origin((830, 140))
     extraPathButton.title("选择")
 
     extraPathTf = Textfield(panel, style=textfieldtype.readonly)
     extraPathTf.origin((20, 165))
-    extraPathTf.size((560, 25))
+    extraPathTf.size((895, 25))
     extraPathTf.textcolor("gray")
     extraPathTf.text(PersistenceUtil.getValueFromJson(filePath, key_extraFilePath))
 
@@ -101,12 +101,12 @@ def openConfigBoard(superview, title):
         chooseDir(panel, onselected=onExportPathSelected)
 
     exportPathButton = Button(panel, onClick=onExportPathButtonAction)
-    exportPathButton.origin((495, 200))
+    exportPathButton.origin((830, 200))
     exportPathButton.title("选择")
 
     exportPathTf = Textfield(panel, style=textfieldtype.readonly)
     exportPathTf.origin((20, 225))
-    exportPathTf.size((560, 25))
+    exportPathTf.size((895, 25))
     exportPathTf.textcolor("gray")
     exportPathTf.text(PersistenceUtil.getValueFromJson(filePath, key_exportDirPath))
 
@@ -127,5 +127,16 @@ def openConfigBoard(superview, title):
     saveButton.size((200, 30))
     saveButton.font(15)
     saveButton.title("\n保存配置\n")
+
+    # 取消关闭
+
+    def onCancelButtonAction(event):
+        dialog.Close()
+
+    cancelButton = Button(panel, onClick=onCancelButtonAction)
+    cancelButton.origin((500, 270))
+    cancelButton.size((200, 30))
+    cancelButton.font(15)
+    cancelButton.title("\n取消关闭\n")
 
     dialog.ShowModal()

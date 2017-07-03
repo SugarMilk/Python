@@ -1,1 +1,1 @@
-#define GameFriendSDKVersion @"3.1.0.0.3"
+#define GameFriendSDKVersion @"3.1.0.0.4"
