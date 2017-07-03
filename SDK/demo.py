@@ -7,11 +7,11 @@ from wxPythonBitmapButton import BitmapButton
 from wxPythonTextfield import Textfield
 from wxPythonRadioBox import RadioBox
 from wxPythonButton import Button
-import ConfigBoard
+import PathBoard
 import wx
 import SDKVersionManager
 import os
-import BeforeBuild
+from BuildHandler import BuildHandler
 
 app = wx.App()
 window = wx.Frame(None, title="好玩友SDK导出工具", size=(500, 270), style=wx.CLOSE_BOX | wx.MINIMIZE_BOX)
@@ -20,7 +20,7 @@ panel = wx.Panel(window, -1)
 # 设置按钮
 
 def onSettingButtonAction(event):
-    ConfigBoard.openConfigBoard(window, "路径配置")
+    PathBoard.openConfigBoard(window, "路径配置")
 
 settingButton = BitmapButton(panel, imagepath='setting.png', onclick=onSettingButtonAction)
 settingButton.origin((450, 10))
@@ -124,17 +124,12 @@ def onBuildButtonAction(event):
     note = noteTf.gettext().encode('utf-8')
     version = newVersionTf.gettext().encode('utf-8')
 
-    buildInfomation = BeforeBuild.buildInfomation(mode, target, note, version)
-    confirmDialog = wx.MessageDialog(panel, buildInfomation[0], "编译导出前请确认无误",style=wx.YES_NO)
+    buildHandler = BuildHandler(mode, target, note, version)
+    confirmDialog = wx.MessageDialog(panel, buildHandler.confirmMessage(), "编译导出前请确认无误",style=wx.YES_NO)
 
     if confirmDialog.ShowModal() == wx.ID_YES:
-        SDKVersionManager.set_new_version(newVersionTf.gettext())
+        buildHandler.startBuild()
 
-        if not os.path.exists("extraInfo.h"):
-            os.system("touch extraInfo.h")
-        context = open("extraInfo.h", 'w')
-        context.write(buildInfomation[1])
-        context.close()
 
 buildButton = Button(panel, onClick=onBuildButtonAction)
 buildButton.origin((240, 183))
