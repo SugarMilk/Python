@@ -15,6 +15,6 @@ tuple = commands.getstatusoutput("sh shell.sh")
 print tuple[0] >> 8 # 3
 """
 
-print commands.getstatusoutput("sh shell.sh")
+print commands.getstatusoutput("xcodebuild")
 
 
