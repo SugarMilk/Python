@@ -15,16 +15,23 @@ class Mywin(wx.Frame):
         l3 = wx.StaticText(panel, -1, "多行文本")
 
         hbox3.Add(l3, 1, wx.EXPAND | wx.ALIGN_LEFT | wx.ALL, 5)
-        self.t3 = wx.TextCtrl(panel, size=(200, 100), style=wx.TE_MULTILINE)
+        self.t3 = wx.TextCtrl(panel, size=(200, 100), style=wx.TE_MULTILINE | wx.TE_READONLY)
 
         hbox3.Add(self.t3, 1, wx.EXPAND | wx.ALIGN_LEFT | wx.ALL, 5)
         vbox.Add(hbox3)
         self.t3.Bind(wx.EVT_TEXT_ENTER, self.OnEnterPressed)
 
         # http://www.cnblogs.com/dream397/p/3925436.html
-        str = "fdsaf""\n""12345"
+        # http://wiki.woodpecker.org.cn/moin/WxPythonInAction/ChapterSeven
+        str = "fdsaf\n""12345"
 
         self.t3.SetValue(str)
+
+        self.t3.SetBackgroundColour("green")
+
+        self.t3.AppendText("vsalkfad")
+
+        self.t3.SetStyle(0, 5, wx.TextAttr("white", "black"))
 
         panel.SetSizer(vbox)
 
