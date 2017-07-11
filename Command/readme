@@ -1,0 +1,31 @@
+1.编译生成.framework
+
+xcodebuild
+build
+-project {project_name}.xcodeproj
+-target {target_name}
+-configuration {configuration}
+-sdk {sdk}
+
+2.删除多余文件
+rm -rf !(GameFriendSDK|Headers|SDKResource.bundle)
+
+3.添加说明
+Info.plist
+
+4.移动SDKResource.bundle文件
+mv {project_dir_name}/build/{configuration}-{sdk}/{framework_name}.framework/SDKResource.bundle {save_dir_name}
+
+5.移动GameFriendSDK.framework文件
+mv {project_dir_name}/build/{configuration}-{sdk}/{framework_name}.framework {save_dir_name}
+
+6.删除文件
+
+rm -rf {project_dir_name}/build/
+
+{save_dir_name} = ~/Desktop/GameFriendSDK-{Area-Date-Time} = GameFriendSDK DL 17-07-11 13-14
+
+
+xcodebuild build -workspace GFSDKMainLand.xcworkspace -scheme GFSDKMainLand -configuration Release -sdk iphoneos
+
+xcodebuild build -project DataType.xcodeproj -target DataType -configuration Release -sdk iphoneos
