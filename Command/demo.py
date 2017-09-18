@@ -18,6 +18,6 @@ statusCode: 0
 """
 
 # No.2
-# f = os.popen("pwd")
-# print f.read()
+f = os.popen("pwd")
+print f.read()
 

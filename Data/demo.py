@@ -11,19 +11,20 @@ dict_ = {
 }
 
 # PersistenceUtil.writePickle("d.pkl", dict_)
-
-print PersistenceUtil.readPickle("d.pkl")
+#
+# print PersistenceUtil.readPickle("d.pkl")
 
 filePath = "temp.json"
 
-# dictContent = {
-#     "projectFilePath": "",
-#     "versionFilePath": "",
-#     "extraInfoFilePath": "",
-#     "exportDirPath": "~/Desktop/"
-# }
+dictContent = {
+    "projectFilePath": "",
+    "versionFilePath": "",
+    "extraInfoFilePath": "",
+    "exportDirPath": "~/Desktop/"
+}
 
 # PersistenceUtil.writeJson(filePath, dictContent)
+
 
 
 PersistenceUtil.modifyJson(filePath, "projectFilePath", "not found")
