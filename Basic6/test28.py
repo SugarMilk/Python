@@ -2,6 +2,7 @@
 # created by mr.huangjian@foxmail.com on 2017/9/18.
 
 import sys
+import sip
 from PyQt5 import QtWidgets, QtGui, QtCore
 
 class ComboBox(QtWidgets.QWidget):

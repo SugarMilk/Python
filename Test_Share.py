@@ -9,6 +9,6 @@ handler.func_set_register_params("wx910b9ad660d63715")
 
 tmp_dict = handler.func_get_register_params()
 
-print tmp_dict[Share.ShareHandler.str_app_key]
+print(tmp_dict[Share.ShareHandler.str_app_key])
 
 

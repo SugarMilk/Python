@@ -1,0 +1,78 @@
+工欲善其事，必先利其器
+
+
+- Python2与Python3
+Python多版本管理
+
+
+- Pip (难度指数*)
+Python有两个著名的包管理工具easy_install.py和pip。
+在Python2.7的安装包中，easy_install.py是默认安装的，而pip需要我们手动安装。
+
+Ref:
+Python包管理工具——Pip http://blog.csdn.net/olanlanxiari/article/details/48086917
+pip安装使用详解 http://www.ttlsa.com/python/how-to-install-and-use-pip-ttlsa/
+
+
+- PyCharm (难度指数*)
+Python编程开发IDE
+专业版需要破解，可使用社区版，支持版本控制
+官网：http://www.jetbrains.com/pycharm/
+下载：https://www.waitsun.com/jetbrains-app.html
+主题：http://color-themes.com/?view=index
+     http://www.phpstorm-themes.com/
+
+Ref:
+如何在PyCharm中使用Git
+
+- Anaconda (难度指数*)
+Anaconda 是一个用于科学计算的Python发行版，支持Linux, Mac, Windows,包含了众多流行的科学计算、数据分析的Python包。
+官网：https://www.anaconda.com/
+介绍：http://python.jobbole.com/86236/
+更多介绍搜索百度、简书，安装很简单，使用很复杂
+
+
+- Qt (难度指数**)
+C++编写的丰富的图形化GUI库
+官网：https://www.qt.io/
+官方离线下载安装包地址：https://www1.qt.io/download-open-source/#section-2
+下载安装时间较长，正常安装即可，需要指定Qt安装目录
+
+添加环境变量：
+# Qt
+export PATH="Qt安装目录/5.9.1/clang_64/bin:$PATH"
+
+常用命令：qmake
+Qt参考文档：http://www.kuqin.com/qtdocument/index.html
+
+- PyQt4与PyQt5
+
+Ref:
+同时安装PyQt4和PyQt5之sip版本区分 https://zhuanlan.zhihu.com/p/20281557
+
+
+- Sip
+官方下载地址：https://riverbankcomputing.com/software/sip/download
+查看sip版本：sip -V
+
+安装命令:
+python configure.py [-d /Library/Python/2.7/site-packages]
+sudo make && date # 加&&date选项，make成功会显示时间
+sudo make install && date
+
+
+
+
+- QScintilla
+
+
+
+- Eric
+
+
+
+
+
+
+
+
